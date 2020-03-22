@@ -76,7 +76,7 @@ try:
 				print("Error")
 
 		# incbin -> include binary file
-		elif asm_input_tokenized[0].lower() == "incbin" and len(asm_input_tokenized) == 2:
+		elif asm_input_tokenized[0].lower() == "#incbin" and len(asm_input_tokenized) == 2:
 			if not os.path.exists(str(asm_input_tokenized[1])):
 				print("Error")
 			elif os.path.isdir(str(asm_input_tokenized[1])):
