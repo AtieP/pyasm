@@ -53,12 +53,12 @@ def interrupt(opcode, address):
 	except ValueError:
 		print("Error")
 		return None
-
+	
 def jump(register, address):
 	"""Converts the jmp instruction into opcodes. Returns the bytes."""
 	try:
 		# it can be a byte, two or more
-		jmp_address_bytes = bytearray(bytes([int(address, 16)]))
+		jmp_address_bytes = bytearray(bytes([int(address)]))
 		jmp_opcodes = bytearray(register + jmp_address_bytes)
 		return jmp_opcodes
 	except ValueError:
