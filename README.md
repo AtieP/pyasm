@@ -13,6 +13,7 @@ Download Python 3. Then, to run the file, use `python pyasm.py [output file]`. D
 `into`  
 `int xx`  
 `db byte`  
+`jmp <label>`  
 `fill <byte> <times>`  
 `fillu <byte> <bytes until the file is>`  
 `inc r8`  
@@ -20,7 +21,8 @@ Download Python 3. Then, to run the file, use `python pyasm.py [output file]`. D
 `dec r8`  
 `dec r16`   
 
-**Note that all numbers are in hexadecimal, except for fill and fillu. And you will see that you can create labels, but they will be useless because I am still developing the jump instruction.**  
+**Note that all numbers are in hexadecimal, except for fill and fillu.**  
+**Example of a label: `label:`**
 
 # Valid preprocessor directives
 `#incbin "binary file"`
