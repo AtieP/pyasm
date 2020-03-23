@@ -382,6 +382,44 @@ try:
 		#
 		# END CHECKING INTERRUPTS
 
+		# START CHECKING JMP
+		#
+
+		elif asm_input_tokenized[0].lower() == "jmp":
+
+			## START CHECKING LABELS
+			##
+
+			# check if label exists
+			if asm_input_tokenized[1] in labels:
+				# check offset
+				# EB's range is from -128 to 127
+
+				if labels[asm_input_tokenized[1]] < offset:
+					distance = offset - labels[asm_input_tokenized[1]]
+
+					if distance < 127 or distance > -128:
+						distance = 254 - distance		# unsigned range of EB is 255, but EB <bytes> are 2 bytes, so thats why we substact 254 (discounting <bytes>).
+						result = functions.jump(opcodes.jmp["jmp"], str(distance))
+						offset+=2
+						output_file.write(result)
+
+					else:
+						print("Error")
+
+				else:
+
+					print("Error")
+
+			##
+			## END CHECKING LABELS
+			else:
+
+				print("Error")
+
+		#
+		# END CHECKING JMP
+
 			
 		# START CHECKING FOR MOV
 		# 
@@ -575,8 +613,6 @@ try:
 		#
 		# END CHECKING MOV
 
-		else:
-			print("Error")
 
 except EOFError:
 	output_file.close()
